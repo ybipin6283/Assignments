@@ -1,7 +1,13 @@
 Secret storage (Key Vault) <br>
-DDoS & audit logging
-Data retention & backups
+1. We can store the secret in the native service. Ex- key vault <br>
+2. We have the option to store the secret in centralize place. then we can use the Hashicopr key vault <br>
 
-<img width="999" height="565" alt="image" src="https://github.com/user-attachments/assets/f4dc85f7-6250-434f-a389-a9f507a76bfa" />
+DDoS & audit logging <br>
+
+Data retention & backups <br>
+
+
+
+
 
 
