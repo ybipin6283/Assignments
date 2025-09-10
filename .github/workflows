@@ -1,1 +1,67 @@
+# This is the Azure Devops pipeline, while deploying the 3 tear application.
+
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+  paths:
+    include:
+    - vote/*
+
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '461c9d69-e936-4729-b81c-ca454c4aaecf'
+  imageRepository: 'vote/votingapp'
+  containerRegistry: 'containeracr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
+  tag: '$(Build.BuildId)'
+
+  # Agent VM image name
+pool:
+ name: 'azure-agent'
+
+stages:
+- stage: Build
+  displayName: Build the image
+  jobs:
+  - job: Build
+    displayName: Build
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'build'
+        Dockerfile: 'vote/Dockerfile'
+        tags: '$(tag)'
+#push the image from docker to ACR
+
+- stage: Push
+  displayName: Push the image
+  jobs:
+  - job: Push
+    displayName: Push 
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        containerRegistry: '$(dockerRegistryServiceConnection)'
+        repository: '$(imageRepository)'
+        command: 'push'
+        tags: '$(tag)'
+
+- stage: Update
+  displayName: Update image
+  jobs:
+  - job: Update
+    displayName: Update
+    steps:
+    - task: ShellScript@2
+      inputs:
+        scriptPath: 'scripts/updateK8sManifests.sh'
+        args: 'vote $(imageRepository) $(tag)'
 
