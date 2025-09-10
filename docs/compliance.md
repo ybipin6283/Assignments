@@ -3,7 +3,7 @@ Secret storage (Key Vault) <br>
 2. We have the option to store the secret in centralize place. then we can use the Hashicopr key vault.
 
 DDoS & audit logging <br>
-
+1. 
 Data retention & backups <br>
 
 
