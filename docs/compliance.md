@@ -12,9 +12,9 @@ Data retention & backups <br>
 
 
 # Bonus (Optional)
-• Blue-green deployments for Functions --> We are followed in AKS/ARO depoyment, application version swap.
-• CI/CD smoke tests --> A quick, basic test to check if the application is working at all after deployment.
-• Cost alerts --> We can enforce the alert for such thing.
+• Blue-green deployments for Functions --> We are followed in AKS/ARO depoyment, application version swap. <br>
+• CI/CD smoke tests --> A quick, basic test to check if the application is working at all after deployment. <br>
+• Cost alerts --> We can enforce the alert for such thing.<br>
 • AKS extension --> 
 
 
