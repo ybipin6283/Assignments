@@ -11,6 +11,13 @@ Data retention & backups <br>
 2. Data retention is nothing but how many days we can store the data, if requirement then we retain the data and use it.
 
 
+# Bonus (Optional)
+• Blue-green deployments for Functions --> We are followed in AKS/ARO depoyment, application version swap.
+• CI/CD smoke tests --> A quick, basic test to check if the application is working at all after deployment.
+• Cost alerts --> We can enforce the alert for such thing.
+• AKS extension --> 
+
+
 
 
 
